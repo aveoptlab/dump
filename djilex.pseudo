@@ -1,0 +1,30 @@
+-- pseudocode sketch
+
+case Qfail or Qgood
+
+     fall through -- because we're starting new.
+
+case state is Qstart
+
+    while buf[base] != 0xAA and not at_end()
+      base++ % size
+
+    if len < 12 return need_more
+
+    packet_start <- base
+
+    if crc16(buf, base) == fail then
+      base++ % size
+      return retry
+    end
+
+    state is Qpayload
+    end case
+
+case state is Qpayload
+    while buf_occupied < packet_len return need_more
+
+    state <- if crc32(buf, base) == fail ? Qfail : Qgood
+
+    base += max(12, packet_len + retry_len)
+end
