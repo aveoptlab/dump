@@ -85,6 +85,12 @@ const uint32_t crc_tab32[] = {
 
 #define CRC_INIT 0x3AA3;
 
+char *cdef_string =
+    "uint16_t calculate_crc16(const uint8_t *, size_t);"
+    "uint32_t calculate_crc32(const uint8_t *, size_t);"
+    ;
+
+
 // Appending of CRCs must be done in little endian order.
 
 uint16_t calculate_crc16(const uint8_t *data, size_t len)

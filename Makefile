@@ -13,7 +13,7 @@ CFLAGS+=-fomit-frame-pointer
 
 .phony: all clean
 
-all: djicrc.so fdio.so termios.so
+all: djicrc.so fdio.so
 
 %.so: %.o
 	gcc -shared $(LDFLAGS) -o $@ $^
