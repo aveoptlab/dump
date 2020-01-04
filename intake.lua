@@ -25,6 +25,8 @@ local function avail() return size - 1 - used() end
 local state = 'initial'
 local data_len
 
+local quit_flag = 0
+
 -- dji_fd is assumed to be non-blocking.
 
 while not taskman.global_flag(quit_flag) do
